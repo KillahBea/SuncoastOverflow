@@ -30,7 +30,7 @@ namespace suncoastoverflow
       {
         var envConn = Environment.GetEnvironmentVariable("DATABASE_URL");
 #warning 
-        var conn = "server=localhost;database=SdOverflow";
+        var conn = "server=localhost;database=SdOverflowDatabase";
         if (envConn != null)
         {
           conn = ConvertPostConnectionToConnectionString(envConn);
