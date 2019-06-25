@@ -2,7 +2,8 @@
 using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using suncoastoverflow.Models;
+
+using SuncoastOverflow.Model;
 
 namespace suncoastoverflow
 {
@@ -29,8 +30,7 @@ namespace suncoastoverflow
       if (!optionsBuilder.IsConfigured)
       {
         var envConn = Environment.GetEnvironmentVariable("DATABASE_URL");
-#warning 
-        var conn = "server=localhost;database=SdOverflowDatabase";
+        var conn = "server=localhost;database=SdOverflowDatabase;User Id=postgres;Password=postgres";
         if (envConn != null)
         {
           conn = ConvertPostConnectionToConnectionString(envConn);
