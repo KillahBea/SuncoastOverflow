@@ -30,7 +30,7 @@ namespace suncoastoverflow
       if (!optionsBuilder.IsConfigured)
       {
         var envConn = Environment.GetEnvironmentVariable("DATABASE_URL");
-        var conn = "server=localhost;database=SdOverflowDatabase;User Id=postgres;Password=postgres";
+        var conn = "server=localhost;database=SdOverflowDatabase";
         if (envConn != null)
         {
           conn = ConvertPostConnectionToConnectionString(envConn);
