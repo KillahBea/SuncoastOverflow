@@ -72,6 +72,43 @@ namespace SuncoastOverflow.Controllers
       return NoContent();
     }
 
+    // Put: api/Question/5/answer
+
+    [HttpPut("{id}/answer")]
+
+    public async Task<IActionResult> PutAnswerToQuestion(int id, [FromBody]Answer answer)
+    {
+
+      var newAnswer = new Answer
+      {
+        Description = answer.Description,
+        QuestionId = id
+      };
+      _context.Answer.Add(newAnswer);
+
+      try
+      {
+        await _context.SaveChangesAsync();
+      }
+      catch (DbUpdateConcurrencyException)
+      {
+        if (!QuestionExists(id))
+        {
+          return NotFound();
+        }
+        else
+        {
+          throw;
+        }
+      }
+
+      return NoContent();
+    }
+
+
+
+
+
     // POST: api/Question
     [HttpPost]
     public async Task<ActionResult<Question>> PostQuestion(Question question)

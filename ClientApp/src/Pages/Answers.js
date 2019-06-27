@@ -6,10 +6,9 @@ class Answers extends Component {
       <main>
         <div className="questionBox">
           <h1>Q:</h1>
-          <p>This is where a question will be displayed.</p>
         </div>
         <div>
-          <h1>Q:</h1>
+          <h1>A:</h1>
         </div>
         <div>
           <div>
@@ -26,7 +25,10 @@ class Answers extends Component {
           </div>
         </div>
         <div>
-          <p>Answer the question:</p>
+          <h3>Would you like to add an answer?</h3>
+          <form>
+            <textarea rows="5" cols="50" name="answer" />
+          </form>
         </div>
       </main>
     )

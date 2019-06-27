@@ -8,7 +8,7 @@ namespace SuncoastOverflow.Model
     public string Description { get; set; }
     public int VoteValue { get; set; }
 
-
-    public List<SuncoastOverflow.Model.Question> Questions { get; set; } = new List<SuncoastOverflow.Model.Question>();
+    public int QuestionId { get; set; }
+    public SuncoastOverflow.Model.Question Question { get; set; }
   }
 }
