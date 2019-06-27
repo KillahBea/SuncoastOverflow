@@ -5,7 +5,6 @@ class Home extends Component {
     return (
       <main>
         <div>
-          <h1>Home</h1>
           <SearchBar />
         </div>
         <div>
@@ -13,7 +12,6 @@ class Home extends Component {
           <ul className="question-list">
             <li>
               <p>This is a question</p>
-              <small>More </small>
             </li>
             <li>
               <p>This is a question</p>

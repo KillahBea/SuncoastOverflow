@@ -38,7 +38,7 @@ export class NavMenu extends Component {
         >
           <Container>
             <NavbarBrand tag={Link} to="/">
-              Sdg React Template
+              Suncoast Overflow
             </NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
             <Collapse
@@ -52,16 +52,16 @@ export class NavMenu extends Component {
                     Home
                   </NavLink>
                 </NavItem>
-                <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/counter">
-                    Counter
+                {/* <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/Questions">
+                    Questions
                   </NavLink>
                 </NavItem>
                 <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/fetch-data">
                     Fetch data
                   </NavLink>
-                </NavItem>
+                </NavItem> */}
               </ul>
             </Collapse>
           </Container>
