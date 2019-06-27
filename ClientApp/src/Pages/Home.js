@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import SearchBar from '../components/SearchBar'
-import Questions from './pages/Questions'
+import Questions from './Questions'
+import { Link } from 'react-router-dom'
 class Home extends Component {
   render() {
     return (
@@ -8,11 +9,9 @@ class Home extends Component {
         <div>
           <SearchBar />
         </div>
-        <Link to=>
+        <Link path="/Questions">
+          <p>Submit a Question</p>
         </Link>
-        <div>
-          <
-        </div>
         <div>
           <h3>Questions</h3>
           <ul className="question-list">

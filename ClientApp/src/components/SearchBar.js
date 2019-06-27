@@ -1,40 +1,33 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 
-
-
-
-export default function SearchBar {
+export default function SearchBar() {
   const [questions, setQuestions] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
-
-
 
   const getSearchResults = e => {
     e.preventDefault()
     axios.get('api/search?searchTerm=' + searchTerm).then(resp => {
       setQuestions(resp.data)
     })
-    }   
-  
-  
-  
-    return (
-      <div>
-        <form onSubmit={getSearchResults} class="form-inline">
-          <i class="fas fa-search" aria-hidden="true" />
-          <input
-            class="form-control form-control-sm ml-3 w-75"
-            type="text"
-            value={searchTerm}
-            onChange={e => setSearchTerm(e.target.value)}
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button>Search</button>
-        </form>
+  }
 
-        {/* <!-- Search form -->
+  return (
+    <div>
+      <form onSubmit={getSearchResults} class="form-inline">
+        <i class="fas fa-search" aria-hidden="true" />
+        <input
+          class="form-control form-control-sm ml-3 w-75"
+          type="text"
+          value={searchTerm}
+          onChange={e => setSearchTerm(e.target.value)}
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button>Search</button>
+      </form>
+
+      {/* <!-- Search form -->
 <form class="form-inline active-cyan-3 active-cyan-4">
   <i class="fas fa-search" aria-hidden="true"></i>
   <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
@@ -54,9 +47,6 @@ export default function SearchBar {
     aria-label="Search"/>
   <i class="fas fa-search" aria-hidden="true"></i>
 </form> */}
-      </div>
-    )
-  }
-
-
-
+    </div>
+  )
+}
