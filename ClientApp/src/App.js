@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router'
 import { Layout } from './components/Layout'
-import { FetchData } from './components/FetchData'
-import { Counter } from './components/Counter'
 import Home from './Pages/Home'
 import Answers from './Pages/Answers'
 export default class App extends Component {
@@ -12,7 +10,7 @@ export default class App extends Component {
     return (
       <Layout>
         <Route exact path="/" component={Home} />
-        <Route exact path="/Answers" component={Answers} />
+        <Route exact path="/:id/Answers" component={Answers} />
       </Layout>
     )
   }
