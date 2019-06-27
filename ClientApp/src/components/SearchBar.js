@@ -1,17 +1,37 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
+import axios from 'axios'
 
-class SearchBar extends Component {
-  render() {
+
+
+
+export default function SearchBar {
+  const [questions, setQuestions] = useState([])
+  const [searchTerm, setSearchTerm] = useState('')
+
+
+
+  const getSearchResults = e => {
+    e.preventDefault()
+    axios.get('api/search?searchTerm=' + searchTerm).then(resp => {
+      setQuestions(resp.data)
+    })
+    }   
+  
+  
+  
     return (
       <div>
-        <form class="form-inline">
+        <form onSubmit={getSearchResults} class="form-inline">
           <i class="fas fa-search" aria-hidden="true" />
           <input
             class="form-control form-control-sm ml-3 w-75"
             type="text"
+            value={searchTerm}
+            onChange={e => setSearchTerm(e.target.value)}
             placeholder="Search"
             aria-label="Search"
           />
+          <button>Search</button>
         </form>
 
         {/* <!-- Search form -->
@@ -37,6 +57,6 @@ class SearchBar extends Component {
       </div>
     )
   }
-}
+
 
 export default SearchBar
