@@ -1,41 +1,38 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import SearchBar from '../components/SearchBar'
+import Questions from './Questions'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
-class Home extends Component {
-  render() {
-    return (
-      <main>
-        <div>
-          <SearchBar />
-        </div>
-        <Link to="/questions/2/answers">this is a question</Link>
-        <div>
-          <h3>Questions</h3>
-          <ul className="question-list">
-            <li>
-              <p>This is a question</p>
-            </li>
-            <li>
-              <p>This is a question</p>
-            </li>
-            <li>
-              <p>This is a question</p>
-            </li>
-            <li>
-              <p>This is a question</p>
-            </li>
-            <li>
-              <p>This is a question</p>
-            </li>
-            <li>
-              <p>This is a question</p>
-            </li>
-          </ul>
-        </div>
-      </main>
-    )
-  }
+export default function Home(props) {
+  const questionId = props.match.params.id
+
+  const [question, setQuestion] = useState([])
+
+  useEffect(() => {
+    axios.get('api/question').then(resp => {
+      console.log(resp.data)
+      setQuestion(resp.data)
+    })
+  }, [])
+
+  return (
+    <main>
+      <div>
+        <Link to="/SearchBar"> Search for a question </Link>
+      </div>
+      <h3>Questions</h3>
+      <ul className="question-list">
+        {question.map(question => {
+          return (
+            <>
+              <Link to="/questions/questionId">
+                <li>{question.description}</li>
+              </Link>
+            </>
+          )
+        })}
+      </ul>
+    </main>
+  )
 }
-
-export default Home

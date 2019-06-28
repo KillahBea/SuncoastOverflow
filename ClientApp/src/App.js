@@ -4,6 +4,7 @@ import { Layout } from './components/Layout'
 import Home from './Pages/Home'
 import Answers from './Pages/Answers'
 import OtherThing from './Pages/Thing'
+import SearchBar from './components/SearchBar'
 
 export default class App extends Component {
   static displayName = App.name
@@ -13,6 +14,7 @@ export default class App extends Component {
       <Layout>
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/searchbar" component={SearchBar} />
           <Route exact path="/questions/:id/answers" component={Answers} />
         </Switch>
       </Layout>

@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 export default function SearchBar() {
   const [questions, setQuestions] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
 
-  useEffect(() => {
-    axios.get('api/question').then(resp => {
-      setQuestions(resp.data)
-    })
-  }, [])
+  // useEffect(() => {
+  //   axios.get('api/question').then(resp => {
+  //     setQuestions(resp.data)
+  //   })
+  // }, [])
 
   const getSearchResults = e => {
     e.preventDefault()
     axios.get('api/search?searchTerm=' + searchTerm).then(resp => {
+      console.log(resp.data)
       setQuestions(resp.data)
     })
   }
@@ -32,26 +34,34 @@ export default function SearchBar() {
         />
         <button>Search</button>
       </form>
-
+      <ul>
+        {questions.map(question => {
+          return (
+            <Link to="/questions/questionId">
+              <li>{question.description}</li>
+            </Link>
+          )
+        })}
+      </ul>
       {/* <!-- Search form -->
 <form class="form-inline active-cyan-3 active-cyan-4">
-  <i class="fas fa-search" aria-hidden="true"></i>
-  <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
-    aria-label="Search"/>
+<i class="fas fa-search" aria-hidden="true"></i>
+<input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
+aria-label="Search"/>
 </form>
 
 <!-- Search form -->
 <form class="form-inline ">
-  <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
-    aria-label="Search"/>
-  <i class="fas fa-search" aria-hidden="true"></i>
+<input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
+aria-label="Search"/>
+<i class="fas fa-search" aria-hidden="true"></i>
 </form>
 
 
 <form class="form-inline active-cyan-4">
-  <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
-    aria-label="Search"/>
-  <i class="fas fa-search" aria-hidden="true"></i>
+<input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
+aria-label="Search"/>
+<i class="fas fa-search" aria-hidden="true"></i>
 </form> */}
     </div>
   )

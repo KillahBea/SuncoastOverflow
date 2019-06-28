@@ -8,6 +8,7 @@ export default function Answers(props) {
 
   useEffect(() => {
     axios.get('api/question/2').then(resp => {
+      console.log(resp.data)
       setQuestion(resp.data)
     })
     axios.get('api/answer').then(resp => {
@@ -16,7 +17,8 @@ export default function Answers(props) {
     })
   }, [])
 
-  const sendNewAnswer = () => {
+  const sendNewAnswer = e => {
+    e.preventDefault()
     axios.put('api/question/id/answer').then(resp => {
       setAnswers(answers.concat(resp.data))
     })
@@ -26,12 +28,13 @@ export default function Answers(props) {
     <main>
       <div className="question-box">
         <h1>Q:</h1>
+        <h3>{question.description}</h3>
       </div>
       <section>
         <ul>
           <h1>A:</h1>
-          {answers.map(frog => {
-            return <li>{frog.Description}</li>
+          {answers.map(answer => {
+            return <li>{answer.description}</li>
           })}
         </ul>
       </section>
@@ -40,8 +43,9 @@ export default function Answers(props) {
         <p>Please provide your answer and explanation to the above question.</p>
         <form onSubmit={sendNewAnswer}>
           <div class="form-group">
-            <input class="form-control" />
-            {/* <textarea class="form-control" rows="5" id="answer" /> */}
+            {/* <input class="form-control" /> */}
+            <textarea class="form-control" rows="5" id="answer" />
+            <button>Submit</button>
           </div>
         </form>
       </div>
